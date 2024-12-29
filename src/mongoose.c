@@ -317,6 +317,7 @@ void cs_base64_finish(struct cs_base64_ctx *ctx) {
   while (j % 4 != 0) {                                                    \
     BASE64_OUT('=');                                                      \
   }                                                                       \
+  if(dst_len != NULL) { *dst_len = j; }                                   \
   BASE64_FLUSH()
 
 #define BASE64_OUT(ch) \
@@ -329,7 +330,7 @@ void cs_base64_finish(struct cs_base64_ctx *ctx) {
     dst[j++] = '\0';   \
   } while (0)
 
-void cs_base64_encode(const unsigned char *src, int src_len, char *dst) {
+void cs_base64_encode(const unsigned char *src, int src_len, char *dst, int *dst_len) {
   BASE64_ENCODE_BODY;
 }
 
@@ -346,6 +347,7 @@ void cs_base64_encode(const unsigned char *src, int src_len, char *dst) {
 #define BASE64_FLUSH()
 
 void cs_fprint_base64(FILE *f, const unsigned char *src, int src_len) {
+  int *dst_len = NULL;
   BASE64_ENCODE_BODY;
 }
 
@@ -1108,7 +1110,7 @@ void cs_md5_update(cs_md5_ctx *ctx, const unsigned char *buf, size_t len) {
   memcpy(ctx->in, buf, len);
 }
 
-void cs_md5_final(unsigned char digest[16], cs_md5_ctx *ctx) {
+void cs_md5_final(unsigned char *digest, cs_md5_ctx *ctx) {
   unsigned count;
   unsigned char *p;
   uint32_t *a;
@@ -2137,6 +2139,42 @@ struct mg_str mg_next_comma_list_entry_n(struct mg_str list, struct mg_str *val,
     *val = list;
 
     if ((chr = mg_strchr(*val, ',')) != NULL) {
+      /* Comma found. Store length and shift the list ptr */
+      val->len = chr - val->p;
+      chr++;
+      list.len -= (chr - list.p);
+      list.p = chr;
+    } else {
+      /* This value is the last one */
+      list = mg_mk_str_n(list.p + list.len, 0);
+    }
+
+    if (eq_val != NULL) {
+      /* Value has form "x=y", adjust pointers and lengths */
+      /* so that val points to "x", and eq_val points to "y". */
+      eq_val->len = 0;
+      eq_val->p = (const char *) memchr(val->p, '=', val->len);
+      if (eq_val->p != NULL) {
+        eq_val->p++; /* Skip over '=' character */
+        eq_val->len = val->p + val->len - eq_val->p;
+        val->len = (eq_val->p - val->p) - 1;
+      }
+    }
+  }
+
+  return list;
+}
+
+struct mg_str mg_next_query_string_entry_n(struct mg_str list, struct mg_str *val,
+                                         struct mg_str *eq_val) {
+  if (list.len == 0) {
+    /* End of the list */
+    list = mg_mk_str(NULL);
+  } else {
+    const char *chr = NULL;
+    *val = list;
+
+    if ((chr = mg_strchr(*val, '&')) != NULL) {
       /* Comma found. Store length and shift the list ptr */
       val->len = chr - val->p;
       chr++;
@@ -5757,18 +5795,6 @@ struct mg_http_proto_data_chuncked {
   int64_t body_len; /* How many bytes of chunked body was reassembled. */
 };
 
-struct mg_http_endpoint {
-  struct mg_http_endpoint *next;
-  struct mg_str uri_pattern; /* owned */
-  char *auth_domain;         /* owned */
-  char *auth_file;           /* owned */
-
-  mg_event_handler_t handler;
-#if MG_ENABLE_CALLBACK_USERDATA
-  void *user_data;
-#endif
-};
-
 enum mg_http_multipart_stream_state {
   MPS_BEGIN,
   MPS_WAITING_FOR_BOUNDARY,
@@ -6318,6 +6344,20 @@ MG_INTERNAL size_t mg_handle_chunked(struct mg_connection *nc,
   }
 
   return body_len;
+}
+
+struct mg_http_endpoint *mg_get_http_endpoints(struct mg_connection *nc) {
+  struct mg_http_proto_data *pd;
+  struct mg_http_endpoint *ep;
+
+  if (nc == NULL) return NULL;
+
+  pd = mg_http_get_proto_data(nc);
+
+  if (pd == NULL) return NULL;
+
+  ep = pd->endpoints;
+  return ep;
 }
 
 struct mg_http_endpoint *mg_http_get_endpoint_handler(struct mg_connection *nc,
@@ -7273,6 +7313,11 @@ int mg_url_decode(const char *src, int src_len, char *dst, int dst_len,
   return i >= src_len ? j : -1;
 }
 
+int mg_url_decode_n(struct mg_str src, struct mg_str *dst,
+                    int is_form_url_encoded){
+	return mg_url_decode((const char *)src.p, src.len, NULL, 0, is_form_url_encoded);
+}
+
 int mg_get_http_var(const struct mg_str *buf, const char *name, char *dst,
                     size_t dst_len) {
   const char *p, *e, *s;
@@ -7623,6 +7668,15 @@ clean:
   if (nonce != nonce_buf) MG_FREE(nonce);
 
   return ret;
+}
+
+int mg_check_digest_auth_algo(struct mg_str method, struct mg_str uri,
+                              struct mg_str username, struct mg_str cnonce,
+                              struct mg_str response, struct mg_str qop,
+                              struct mg_str nc, struct mg_str nonce,
+                              struct mg_str auth_domain, enum mg_auth_algo algo,
+                              FILE *fp) {
+	return 1;
 }
 
 int mg_check_digest_auth(struct mg_str method, struct mg_str uri,
@@ -10368,7 +10422,7 @@ size_t mg_fwrite(const void *ptr, size_t size, size_t count, FILE *f) {
 #endif
 
 void mg_base64_encode(const unsigned char *src, int src_len, char *dst) {
-  cs_base64_encode(src, src_len, dst);
+  cs_base64_encode(src, src_len, dst, NULL);
 }
 
 int mg_base64_decode(const unsigned char *s, int len, char *dst) {
