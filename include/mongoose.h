@@ -18,7 +18,7 @@
  */
 
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_common.h"
+#line 1 "mongoose/src/mg_common.h"
 #endif
 #ifndef CS_MONGOOSE_SRC_COMMON_H_
 #define CS_MONGOOSE_SRC_COMMON_H_
@@ -32,7 +32,7 @@
 
 #endif /* CS_MONGOOSE_SRC_COMMON_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platform.h"
+#line 1 "common/platform.h"
 #endif
 #ifndef CS_COMMON_PLATFORM_H_
 #define CS_COMMON_PLATFORM_H_
@@ -174,7 +174,7 @@
 
 #endif /* CS_COMMON_PLATFORM_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_windows.h"
+#line 1 "common/platforms/platform_windows.h"
 #endif
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_WINDOWS_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_WINDOWS_H_
@@ -360,7 +360,7 @@ unsigned int sleep(unsigned int seconds);
 #endif /* CS_PLATFORM == CS_P_WINDOWS */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_WINDOWS_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_unix.h"
+#line 1 "common/platforms/platform_unix.h"
 #endif
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_UNIX_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_UNIX_H_
@@ -508,8 +508,9 @@ typedef struct stat cs_stat_t;
 #endif /* CS_PLATFORM == CS_P_UNIX */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_UNIX_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_esp32.h"
+#line 1 "common/platforms/platform_esp32.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_ESP32_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_ESP32_H_
 #if CS_PLATFORM == CS_P_ESP32
@@ -548,8 +549,9 @@ typedef struct stat cs_stat_t;
 #endif /* CS_PLATFORM == CS_P_ESP32 */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_ESP32_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_esp8266.h"
+#line 1 "common/platforms/platform_esp8266.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_ESP8266_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_ESP8266_H_
 #if CS_PLATFORM == CS_P_ESP8266
@@ -604,8 +606,9 @@ typedef struct stat cs_stat_t;
 #endif /* CS_PLATFORM == CS_P_ESP8266 */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_ESP8266_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_cc3100.h"
+#line 1 "common/platforms/platform_cc3100.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_CC3100_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_CC3100_H_
 #if CS_PLATFORM == CS_P_CC3100
@@ -648,8 +651,9 @@ int inet_pton(int af, const char *src, void *dst);
 #endif /* CS_PLATFORM == CS_P_CC3100 */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_CC3100_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_cc3200.h"
+#line 1 "common/platforms/platform_cc3200.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_CC3200_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_CC3200_H_
 #if CS_PLATFORM == CS_P_CC3200
@@ -768,8 +772,9 @@ int stat(const char *pathname, struct stat *st);
 #endif /* CS_PLATFORM == CS_P_CC3200 */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_CC3200_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_cc3220.h"
+#line 1 "common/platforms/platform_cc3220.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_CC3220_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_CC3220_H_
 #if CS_PLATFORM == CS_P_CC3220
@@ -875,8 +880,9 @@ int stat(const char *pathname, struct stat *st);
 #endif /* CS_PLATFORM == CS_P_CC3220 */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_CC3200_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_msp432.h"
+#line 1 "common/platforms/platform_msp432.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_MSP432_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_MSP432_H_
 #if CS_PLATFORM == CS_P_MSP432
@@ -978,8 +984,9 @@ int _stat(const char *pathname, struct stat *st);
 #endif /* CS_PLATFORM == CS_P_MSP432 */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_MSP432_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_tm4c129.h"
+#line 1 "common/platforms/platform_tm4c129.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_TM4C129_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_TM4C129_H_
 #if CS_PLATFORM == CS_P_TM4C129
@@ -1033,8 +1040,9 @@ typedef struct stat cs_stat_t;
 #endif /* CS_PLATFORM == CS_P_TM4C129 */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_TM4C129_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_mbed.h"
+#line 1 "common/platforms/platform_mbed.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_MBED_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_MBED_H_
 #if CS_PLATFORM == CS_P_MBED
@@ -1112,7 +1120,7 @@ in_addr_t inet_addr(const char *cp);
 #endif /* CS_PLATFORM == CS_P_MBED */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_MBED_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_nrf51.h"
+#line 1 "common/platforms/platform_nrf51.h"
 #endif
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_NRF51_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_NRF51_H_
@@ -1153,7 +1161,7 @@ int gettimeofday(struct timeval *tp, void *tzp);
 #endif /* CS_PLATFORM == CS_P_NRF51 */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_NRF51_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_nrf52.h"
+#line 1 "common/platforms/platform_nrf52.h"
 #endif
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_NRF52_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_NRF52_H_
@@ -1197,8 +1205,9 @@ int gettimeofday(struct timeval *tp, void *tzp);
 #endif /* CS_PLATFORM == CS_P_NRF52 */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_NRF52_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/simplelink/cs_simplelink.h"
+#line 1 "common/platforms/simplelink/cs_simplelink.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_SIMPLELINK_CS_SIMPLELINK_H_
 #define CS_COMMON_PLATFORMS_SIMPLELINK_CS_SIMPLELINK_H_
 
@@ -1359,7 +1368,7 @@ int slfs_open(const unsigned char *fname, uint32_t flags, uint32_t *token);
 
 #endif /* CS_COMMON_PLATFORMS_SIMPLELINK_CS_SIMPLELINK_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_wince.h"
+#line 1 "common/platforms/platform_wince.h"
 #endif
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_WINCE_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_WINCE_H_
@@ -1563,8 +1572,9 @@ const char *strerror();
 #endif /* CS_PLATFORM == CS_P_WINCE */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_WINCE_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_nxp_lpc.h"
+#line 1 "common/platforms/platform_nxp_lpc.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_NXP_LPC_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_NXP_LPC_H_
 
@@ -1614,8 +1624,9 @@ typedef struct stat cs_stat_t;
 #endif /* CS_PLATFORM == CS_P_NXP_LPC */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_NXP_LPC_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_nxp_kinetis.h"
+#line 1 "common/platforms/platform_nxp_kinetis.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_NXP_KINETIS_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_NXP_KINETIS_H_
 
@@ -1643,8 +1654,9 @@ typedef struct stat cs_stat_t;
 #endif /* CS_PLATFORM == CS_P_NXP_KINETIS */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_NXP_KINETIS_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_pic32.h"
+#line 1 "common/platforms/platform_pic32.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_PIC32_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_PIC32_H_
 
@@ -1678,8 +1690,9 @@ char *inet_ntoa(struct in_addr in);
 
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_PIC32_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_rs14100.h"
+#line 1 "common/platforms/platform_rs14100.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_RS14100_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_RS14100_H_
 #if CS_PLATFORM == CS_P_RS14100
@@ -1725,8 +1738,9 @@ typedef struct stat cs_stat_t;
 #endif /* CS_PLATFORM == CS_P_RS14100 */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_RS14100_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/platform_stm32.h"
+#line 1 "common/platforms/platform_stm32.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_PLATFORM_STM32_H_
 #define CS_COMMON_PLATFORMS_PLATFORM_STM32_H_
 #if CS_PLATFORM == CS_P_STM32
@@ -1762,8 +1776,9 @@ typedef struct stat cs_stat_t;
 #endif /* CS_PLATFORM == CS_P_STM32 */
 #endif /* CS_COMMON_PLATFORMS_PLATFORM_STM32_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/platforms/lwip/mg_lwip.h"
+#line 1 "common/platforms/lwip/mg_lwip.h"
 #endif
+
 #ifndef CS_COMMON_PLATFORMS_LWIP_MG_LWIP_H_
 #define CS_COMMON_PLATFORMS_LWIP_MG_LWIP_H_
 
@@ -1828,8 +1843,9 @@ void mg_lwip_set_keepalive_params(struct mg_connection *nc, int idle,
 
 #endif /* CS_COMMON_PLATFORMS_LWIP_MG_LWIP_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/cs_md5.h"
+#line 1 "common/cs_md5.h"
 #endif
+
 #ifndef CS_COMMON_MD5_H_
 #define CS_COMMON_MD5_H_
 
@@ -1859,8 +1875,9 @@ void cs_md5_final(unsigned char *md, cs_md5_ctx *c);
 
 #endif /* CS_COMMON_MD5_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/cs_sha1.h"
+#line 1 "common/cs_sha1.h"
 #endif
+
 #ifndef CS_COMMON_SHA1_H_
 #define CS_COMMON_SHA1_H_
 
@@ -1896,8 +1913,9 @@ void cs_hmac_sha1(const unsigned char *key, size_t key_len,
 
 #endif /* CS_COMMON_SHA1_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/cs_time.h"
+#line 1 "common/cs_time.h"
 #endif
+
 #ifndef CS_COMMON_CS_TIME_H_
 #define CS_COMMON_CS_TIME_H_
 
@@ -1924,8 +1942,9 @@ double cs_timegm(const struct tm *tm);
 
 #endif /* CS_COMMON_CS_TIME_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/mg_str.h"
+#line 1 "common/mg_str.h"
 #endif
+
 #ifndef CS_COMMON_MG_STR_H_
 #define CS_COMMON_MG_STR_H_
 
@@ -2023,8 +2042,9 @@ int mg_str_starts_with(struct mg_str s, struct mg_str prefix);
 
 #endif /* CS_COMMON_MG_STR_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/mbuf.h"
+#line 1 "common/mbuf.h"
 #endif
+
 /*
  * Mbufs are mutable/growing memory buffers, like C++ strings.
  * Mbuf can append data to the end of a buffer or insert data into arbitrary
@@ -2120,8 +2140,9 @@ void mbuf_trim(struct mbuf *);
 
 #endif /* CS_COMMON_MBUF_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/cs_base64.h"
+#line 1 "common/cs_base64.h"
 #endif
+
 #ifndef CS_COMMON_CS_BASE64_H_
 #define CS_COMMON_CS_BASE64_H_
 
@@ -2152,7 +2173,7 @@ void cs_base64_init(struct cs_base64_ctx *ctx, cs_base64_putc_t putc,
 void cs_base64_update(struct cs_base64_ctx *ctx, const char *str, size_t len);
 void cs_base64_finish(struct cs_base64_ctx *ctx);
 
-void cs_base64_encode(const unsigned char *src, int src_len, char *dst, int *enc_len);
+void cs_base64_encode(const unsigned char *src, int src_len, char *dst);
 void cs_fprint_base64(FILE *f, const unsigned char *src, int src_len);
 
 /*
@@ -2172,8 +2193,9 @@ int cs_base64_decode(const unsigned char *s, int len, char *dst, int *dec_len);
 
 #endif /* CS_COMMON_CS_BASE64_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/str_util.h"
+#line 1 "common/str_util.h"
 #endif
+
 #ifndef CS_COMMON_STR_UTIL_H_
 #define CS_COMMON_STR_UTIL_H_
 
@@ -2324,14 +2346,6 @@ struct mg_str mg_next_comma_list_entry_n(struct mg_str list, struct mg_str *val,
                                          struct mg_str *eq_val);
 
 /*
- * Helper for parsing query strings.
- * Parses '&' and '=' entries. Does not perform unescaping.
- */
-struct mg_str mg_next_query_string_entry_n(struct mg_str list,
-                                           struct mg_str *val,
-                                           struct mg_str *eq_val);
-
-/*
  * Matches 0-terminated string (mg_match_prefix) or string with given length
  * mg_match_prefix_n against a glob pattern. Glob syntax:
  * ```
@@ -2364,7 +2378,7 @@ size_t mg_match_prefix_n(const struct mg_str pattern, const struct mg_str str);
 
 #endif /* CS_COMMON_STR_UTIL_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/common/queue.h"
+#line 1 "common/queue.h"
 #endif
 /* clang-format off */
 /*-
@@ -3119,8 +3133,9 @@ struct {								\
 
 #endif /* !_SYS_QUEUE_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_features.h"
+#line 1 "mongoose/src/mg_features.h"
 #endif
+
 #ifndef CS_MONGOOSE_SRC_FEATURES_H_
 #define CS_MONGOOSE_SRC_FEATURES_H_
 
@@ -3293,8 +3308,9 @@ struct {								\
 
 #endif /* CS_MONGOOSE_SRC_FEATURES_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_net_if.h"
+#line 1 "mongoose/src/mg_net_if.h"
 #endif
+
 #ifndef CS_MONGOOSE_SRC_NET_IF_H_
 #define CS_MONGOOSE_SRC_NET_IF_H_
 
@@ -3422,8 +3438,9 @@ double mg_mgr_min_timer(const struct mg_mgr *mgr);
 
 #endif /* CS_MONGOOSE_SRC_NET_IF_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_ssl_if.h"
+#line 1 "mongoose/src/mg_ssl_if.h"
 #endif
+
 #ifndef CS_MONGOOSE_SRC_SSL_IF_H_
 #define CS_MONGOOSE_SRC_SSL_IF_H_
 
@@ -3475,8 +3492,9 @@ int mg_ssl_if_write(struct mg_connection *nc, const void *data, size_t len);
 
 #endif /* CS_MONGOOSE_SRC_SSL_IF_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_net.h"
+#line 1 "mongoose/src/mg_net.h"
 #endif
+
 /*
  * === Core API: TCP/UDP/SSL
  *
@@ -3871,15 +3889,6 @@ struct mg_connect_opts {
    */
   const char *ssl_psk_identity;
   const char *ssl_psk_key;
-#else
-  /* Ensure struct size remains the same. */
-  const char *unused_ssl_cert;
-  const char *unused_ssl_key;
-  const char *unused_ssl_ca_cert;
-  const char *unused_ssl_cipher_suites;
-  const char *unused_ssl_server_name;
-  const char *unused_ssl_psk_identity;
-  const char *unused_ssl_psk_key;
 #endif
 };
 
@@ -4069,8 +4078,9 @@ double mg_time(void);
 
 #endif /* CS_MONGOOSE_SRC_NET_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_uri.h"
+#line 1 "mongoose/src/mg_uri.h"
 #endif
+
 /*
  * === URI
  */
@@ -4134,8 +4144,9 @@ int mg_normalize_uri_path(const struct mg_str *in, struct mg_str *out);
 #endif /* __cplusplus */
 #endif /* CS_MONGOOSE_SRC_URI_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_util.h"
+#line 1 "mongoose/src/mg_util.h"
 #endif
+
 /*
  * === Utility API
  */
@@ -4342,34 +4353,14 @@ struct mg_str mg_url_encode_opt(const struct mg_str src,
 /* Same as `mg_url_encode_opt(src, "._-$,;~()/", 0)`. */
 struct mg_str mg_url_encode(const struct mg_str src);
 
-/*
- * Decodes a URL-encoded string.
- *
- * Source string is specified by (`src`, `src_len`), and destination is
- * (`dst`, `dst_len`). If `is_form_url_encoded` is non-zero, then
- * `+` character is decoded as a blank space character. This function
- * guarantees to NUL-terminate the destination. If destination is too small,
- * then the source string is partially decoded and `-1` is returned.
- * Otherwise, the length of the decoded string is returned,
- * not counting final NUL.
- */
-int mg_url_decode(const char *src, int src_len, char *dst, int dst_len,
-                  int is_form_url_encoded);
-
-/*
- * mg_str variant of mg_url_decode. Does not NUL-terminate dst.
- * It is ok for src and dst to be the same.
- */
-int mg_url_decode_n(struct mg_str src, struct mg_str *dst,
-                    int is_form_url_encoded);
-
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 #endif /* CS_MONGOOSE_SRC_UTIL_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_http.h"
+#line 1 "mongoose/src/mg_http.h"
 #endif
+
 /*
  * === Common API reference
  */
@@ -4429,15 +4420,7 @@ struct http_message {
   /* Headers */
   struct mg_str header_names[MG_MAX_HTTP_HEADERS];
   struct mg_str header_values[MG_MAX_HTTP_HEADERS];
-
-  /*
-   * Value of the Content-Length header if present,
-   * otherwise MG_HTTP_CONTENT_LENGTH_UNKNOWN.
-   */
-  size_t content_length;
 };
-
-#define MG_HTTP_CONTENT_LENGTH_UNKNOWN ((size_t) -1)
 
 #if MG_ENABLE_HTTP_WEBSOCKET
 /* WebSocket message */
@@ -4700,12 +4683,24 @@ void mg_printf_websocket_frame(struct mg_connection *nc, int op_and_flags,
 
 #endif /* MG_ENABLE_HTTP_WEBSOCKET */
 
+/*
+ * Decodes a URL-encoded string.
+ *
+ * Source string is specified by (`src`, `src_len`), and destination is
+ * (`dst`, `dst_len`). If `is_form_url_encoded` is non-zero, then
+ * `+` character is decoded as a blank space character. This function
+ * guarantees to NUL-terminate the destination. If destination is too small,
+ * then the source string is partially decoded and `-1` is returned.
+ *Otherwise,
+ * a length of the decoded string is returned, not counting final NUL.
+ */
+int mg_url_decode(const char *src, int src_len, char *dst, int dst_len,
+                  int is_form_url_encoded);
+
 extern void mg_hash_md5_v(size_t num_msgs, const uint8_t *msgs[],
                           const size_t *msg_lens, uint8_t *digest);
 extern void mg_hash_sha1_v(size_t num_msgs, const uint8_t *msgs[],
                            const size_t *msg_lens, uint8_t *digest);
-extern void mg_hash_sha256_v(size_t num_msgs, const uint8_t *msgs[],
-                             const size_t *msg_lens, uint8_t *digest);
 
 /*
  * Flags for `mg_http_is_authorized()`.
@@ -4713,7 +4708,6 @@ extern void mg_hash_sha256_v(size_t num_msgs, const uint8_t *msgs[],
 #define MG_AUTH_FLAG_IS_DIRECTORY (1 << 0)
 #define MG_AUTH_FLAG_IS_GLOBAL_PASS_FILE (1 << 1)
 #define MG_AUTH_FLAG_ALLOW_MISSING_FILE (1 << 2)
-#define MG_AUTH_FLAG_ALGO(algo) ((((int) algo) & 3) << 8)
 
 /*
  * Checks whether an http request is authorized. `domain` is the authentication
@@ -4726,6 +4720,12 @@ int mg_http_is_authorized(struct http_message *hm, struct mg_str path,
                           const char *domain, const char *passwords_file,
                           int flags);
 
+/*
+ * Sends 401 Unauthorized response.
+ */
+void mg_http_send_digest_auth_request(struct mg_connection *c,
+                                      const char *domain);
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
@@ -4734,7 +4734,7 @@ int mg_http_is_authorized(struct http_message *hm, struct mg_str path,
 
 #endif /* CS_MONGOOSE_SRC_HTTP_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_http_server.h"
+#line 1 "mongoose/src/mg_http_server.h"
 #endif
 /*
  * === Server API reference
@@ -4876,14 +4876,6 @@ size_t mg_parse_multipart(const char *buf, size_t buf_len, char *var_name,
 int mg_get_http_var(const struct mg_str *buf, const char *name, char *dst,
                     size_t dst_len);
 
-/*
- * Supported digest auth algorithms.
- */
-enum mg_auth_algo {
-  MG_AUTH_ALGO_MD5 = 0,
-  MG_AUTH_ALGO_SHA256 = 1,
-};
-
 #if MG_ENABLE_FILESYSTEM
 /*
  * This structure defines how `mg_serve_http()` works.
@@ -4919,11 +4911,6 @@ struct mg_serve_http_opts {
    * is located outside document root to prevent people fetching it.
    */
   const char *global_auth_file;
-
-  /*
-   * Password hashing algorithm used by the password files.
-   */
-  enum mg_auth_algo auth_algo;
 
   /* Set to "no" to disable directory listing. Enabled by default. */
   const char *enable_directory_listing;
@@ -5176,7 +5163,6 @@ struct mg_http_endpoint_opts {
   /* Authorization domain (realm) */
   const char *auth_domain;
   const char *auth_file;
-  enum mg_auth_algo auth_algo;
 };
 
 void mg_register_http_endpoint_opt(struct mg_connection *nc,
@@ -5185,43 +5171,11 @@ void mg_register_http_endpoint_opt(struct mg_connection *nc,
                                    struct mg_http_endpoint_opts opts);
 
 /*
- * HTTP endpoint descriptor.
- */
-struct mg_http_endpoint {
-  struct mg_http_endpoint *next;
-  struct mg_str uri_pattern; /* owned */
-  char *auth_domain;         /* owned */
-  char *auth_file;           /* owned */
-  enum mg_auth_algo auth_algo;
-
-  mg_event_handler_t handler;
-#if MG_ENABLE_CALLBACK_USERDATA
-  void *user_data;
-#endif
-};
-
-/*
- * Returns first registered endpoint.
- */
-struct mg_http_endpoint *mg_get_http_endpoints(struct mg_connection *nc);
-
-/*
- * Sends 401 Unauthorized response.
- */
-void mg_http_send_digest_auth_request(struct mg_connection *c,
-                                      const char *domain);
-void mg_http_send_digest_auth_request_algo(struct mg_connection *c,
-                                           const char *domain,
-                                           enum mg_auth_algo algo);
-
-/*
  * Authenticates a HTTP request against an opened password file.
  * Returns 1 if authenticated, 0 otherwise.
  */
 int mg_http_check_digest_auth(struct http_message *hm, const char *auth_domain,
                               FILE *fp);
-int mg_http_check_digest_auth_algo(struct http_message *hm, const char *auth_domain,
-                              enum mg_auth_algo fp_algo, FILE *fp);
 
 /*
  * Authenticates given response params against an opened password file.
@@ -5234,12 +5188,6 @@ int mg_check_digest_auth(struct mg_str method, struct mg_str uri,
                          struct mg_str response, struct mg_str qop,
                          struct mg_str nc, struct mg_str nonce,
                          struct mg_str auth_domain, FILE *fp);
-int mg_check_digest_auth_algo(struct mg_str method, struct mg_str uri,
-                              struct mg_str username, struct mg_str cnonce,
-                              struct mg_str response, struct mg_str qop,
-                              struct mg_str nc, struct mg_str nonce,
-                              struct mg_str auth_domain, enum mg_auth_algo algo,
-                              FILE *fp);
 
 /*
  * Sends buffer `buf` of size `len` to the client using chunked HTTP encoding.
@@ -5350,7 +5298,7 @@ void mg_http_reverse_proxy(struct mg_connection *nc,
 
 #endif /* CS_MONGOOSE_SRC_HTTP_SERVER_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_http_client.h"
+#line 1 "mongoose/src/mg_http_client.h"
 #endif
 /*
  * === Client API reference
@@ -5409,20 +5357,15 @@ int mg_http_create_digest_auth_header(char *buf, size_t buf_len,
                                       const char *method, const char *uri,
                                       const char *auth_domain, const char *user,
                                       const char *passwd, const char *nonce);
-int mg_http_create_digest_auth_header_algo(char *buf, size_t buf_len,
-                                           const char *method, const char *uri,
-                                           const char *auth_domain,
-                                           const char *user, const char *passwd,
-                                           const char *nonce,
-                                           enum mg_auth_algo algo);
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 #endif /* CS_MONGOOSE_SRC_HTTP_CLIENT_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_mqtt.h"
+#line 1 "mongoose/src/mg_mqtt.h"
 #endif
+
 /*
  * === MQTT API reference
  */
@@ -5635,8 +5578,9 @@ int mg_mqtt_vmatch_topic_expression(const char *exp, struct mg_str topic);
 
 #endif /* CS_MONGOOSE_SRC_MQTT_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_mqtt_server.h"
+#line 1 "mongoose/src/mg_mqtt_server.h"
 #endif
+
 /*
  * === MQTT Server API reference
  */
@@ -5725,8 +5669,9 @@ struct mg_mqtt_session *mg_mqtt_next(struct mg_mqtt_broker *brk,
 #endif /* MG_ENABLE_MQTT_BROKER */
 #endif /* CS_MONGOOSE_SRC_MQTT_BROKER_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_dns.h"
+#line 1 "mongoose/src/mg_dns.h"
 #endif
+
 /*
  * === DNS API reference
  */
@@ -5750,12 +5695,8 @@ extern "C" {
 #define MG_DNS_ANY_RECORD 0xff
 #define MG_DNS_NSEC_RECORD 0x2f
 
-#ifndef MG_MAX_DNS_QUESTIONS
 #define MG_MAX_DNS_QUESTIONS 32
-#endif
-#ifndef MG_MAX_DNS_ANSWERS
 #define MG_MAX_DNS_ANSWERS 32
-#endif
 
 #define MG_DNS_MESSAGE 100 /* High-level DNS message event */
 
@@ -5892,8 +5833,9 @@ void mg_set_protocol_dns(struct mg_connection *nc);
 #endif /* __cplusplus */
 #endif /* CS_MONGOOSE_SRC_DNS_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_dns_server.h"
+#line 1 "mongoose/src/mg_dns_server.h"
 #endif
+
 /*
  * === DNS server API reference
  *
@@ -5984,8 +5926,9 @@ void mg_dns_send_reply(struct mg_connection *nc, struct mg_dns_reply *r);
 #endif /* MG_ENABLE_DNS_SERVER */
 #endif /* CS_MONGOOSE_SRC_DNS_SERVER_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_resolv.h"
+#line 1 "mongoose/src/mg_resolv.h"
 #endif
+
 /*
  * === API reference
  */
@@ -6063,8 +6006,9 @@ int mg_resolve_from_hosts_file(const char *host, union socket_address *usa);
 #endif /* __cplusplus */
 #endif /* CS_MONGOOSE_SRC_RESOLV_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_coap.h"
+#line 1 "mongoose/src/mg_coap.h"
 #endif
+
 /*
  * === CoAP API reference
  *
@@ -6214,8 +6158,9 @@ uint32_t mg_coap_compose(struct mg_coap_message *cm, struct mbuf *io);
 
 #endif /* CS_MONGOOSE_SRC_COAP_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_sntp.h"
+#line 1 "mongoose/src/mg_sntp.h"
 #endif
+
 #ifndef CS_MONGOOSE_SRC_SNTP_H_
 #define CS_MONGOOSE_SRC_SNTP_H_
 
@@ -6266,8 +6211,9 @@ struct mg_connection *mg_sntp_get_time(struct mg_mgr *mgr,
 
 #endif /* CS_MONGOOSE_SRC_SNTP_H_ */
 #ifdef MG_MODULE_LINES
-#line 1 "src/mg_socks.h"
+#line 1 "mongoose/src/mg_socks.h"
 #endif
+
 #ifndef CS_MONGOOSE_SRC_SOCKS_H_
 #define CS_MONGOOSE_SRC_SOCKS_H_
 
