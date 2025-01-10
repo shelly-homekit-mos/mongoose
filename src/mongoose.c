@@ -19,7 +19,14 @@
 
 #include "mongoose.h"
 #ifdef MG_MODULE_LINES
+
 #line 1 "mongoose/src/mg_internal.h"
+#endif
+
+#ifdef ESP_PLATFORM
+#define PRIERR "d"
+#else
+#define PRIERR "ld"
 #endif
 
 #ifndef CS_MONGOOSE_SRC_INTERNAL_H_
@@ -7183,7 +7190,7 @@ void mg_http_serve_file_internal(struct mg_connection *nc,
     };
     mg_http_send_error(nc, code, "Open failed");
   } else {
-    char etag[50], current_time[50], last_modified[50], range[70];
+    char etag[50], current_time[50], last_modified[50], range[76];
     time_t t = (time_t) mg_time();
     int64_t r1 = 0, r2 = 0, cl = st.st_size;
     struct mg_str *range_hdr = mg_get_http_header(hm, "Range");
@@ -15021,7 +15028,7 @@ void mg_lwip_set_keepalive_params(struct mg_connection *nc, int idle,
 
 static err_t mg_lwip_tcp_conn_cb(void *arg, struct tcp_pcb *tpcb, err_t err) {
   struct mg_connection *nc = (struct mg_connection *) arg;
-  DBG(("%p connect to %s:%u = %d", nc, IPADDR_NTOA(ipX_2_ip(&tpcb->remote_ip)),
+  DBG(("%p connect to %s:%u = %"PRIERR"", nc, IPADDR_NTOA(ipX_2_ip(&tpcb->remote_ip)),
        tpcb->remote_port, err));
   if (nc == NULL) {
     tcp_abort(tpcb);
@@ -15038,7 +15045,7 @@ static err_t mg_lwip_tcp_conn_cb(void *arg, struct tcp_pcb *tpcb, err_t err) {
 
 static void mg_lwip_tcp_error_cb(void *arg, err_t err) {
   struct mg_connection *nc = (struct mg_connection *) arg;
-  DBG(("%p conn error %d", nc, err));
+  DBG(("%p conn error %"PRIERR"", nc, err));
   if (nc == NULL || (nc->flags & MG_F_CLOSE_IMMEDIATELY)) return;
   struct mg_lwip_conn_state *cs = (struct mg_lwip_conn_state *) nc->sock;
   cs->pcb.tcp = NULL; /* Has already been deallocated */
@@ -15055,7 +15062,7 @@ static err_t mg_lwip_tcp_recv_cb(void *arg, struct tcp_pcb *tpcb,
   struct mg_connection *nc = (struct mg_connection *) arg;
   struct mg_lwip_conn_state *cs =
       (nc ? (struct mg_lwip_conn_state *) nc->sock : NULL);
-  DBG(("%p %p %p %p %u %d", nc, cs, tpcb, p, (p != NULL ? p->tot_len : 0),
+  DBG(("%p %p %p %p %u %"PRIERR"", nc, cs, tpcb, p, (p != NULL ? p->tot_len : 0),
        err));
   if (p == NULL) {
     if (nc != NULL && !(nc->flags & MG_F_CLOSE_IMMEDIATELY)) {
@@ -15141,13 +15148,13 @@ static void mg_lwip_if_connect_tcp_tcpip(void *arg) {
   tcp_sent(tpcb, mg_lwip_tcp_sent_cb);
   tcp_recv(tpcb, mg_lwip_tcp_recv_cb);
   cs->err = TCP_BIND(tpcb, IP_ADDR_ANY, 0 /* any port */);
-  DBG(("%p tcp_bind = %d", nc, cs->err));
+  DBG(("%p tcp_bind = %"PRIERR"", nc, cs->err));
   if (cs->err != ERR_OK) {
     mg_lwip_post_signal(MG_SIG_CONNECT_RESULT, nc);
     return;
   }
   cs->err = tcp_connect(tpcb, ip, port, mg_lwip_tcp_conn_cb);
-  DBG(("%p tcp_connect %p = %d", nc, tpcb, cs->err));
+  DBG(("%p tcp_connect %p = %"PRIERR"", nc, tpcb, cs->err));
   if (cs->err != ERR_OK) {
     mg_lwip_post_signal(MG_SIG_CONNECT_RESULT, nc);
     return;
@@ -15239,7 +15246,7 @@ static void mg_lwip_if_connect_udp_tcpip(void *arg) {
   struct mg_lwip_conn_state *cs = (struct mg_lwip_conn_state *) nc->sock;
   struct udp_pcb *upcb = udp_new();
   cs->err = UDP_BIND(upcb, IP_ADDR_ANY, 0 /* any port */);
-  DBG(("%p udp_bind %p = %d", nc, upcb, cs->err));
+  DBG(("%p udp_bind %p = %"PRIERR"", nc, upcb, cs->err));
   if (cs->err == ERR_OK) {
     udp_recv(upcb, mg_lwip_udp_recv_cb, nc);
     cs->pcb.udp = upcb;
@@ -15321,7 +15328,7 @@ static void mg_lwip_if_listen_tcp_tcpip(void *arg) {
   ip_addr_t *ip = (ip_addr_t *) &sa->sin.sin_addr.s_addr;
   u16_t port = ntohs(sa->sin.sin_port);
   cs->err = TCP_BIND(tpcb, ip, port);
-  DBG(("%p tcp_bind(%s:%u) = %d", nc, IPADDR_NTOA(ip), port, cs->err));
+  DBG(("%p tcp_bind(%s:%u) = %"PRIERR"", nc, IPADDR_NTOA(ip), port, cs->err));
   if (cs->err != ERR_OK) {
     tcp_close(tpcb);
     ctx->ret = -1;
@@ -15349,7 +15356,7 @@ static void mg_lwip_if_listen_udp_tcpip(void *arg) {
   ip_addr_t *ip = (ip_addr_t *) &sa->sin.sin_addr.s_addr;
   u16_t port = ntohs(sa->sin.sin_port);
   cs->err = UDP_BIND(upcb, ip, port);
-  DBG(("%p udb_bind(%s:%u) = %d", nc, IPADDR_NTOA(ip), port, cs->err));
+  DBG(("%p udb_bind(%s:%u) = %"PRIERR"", nc, IPADDR_NTOA(ip), port, cs->err));
   if (cs->err != ERR_OK) {
     udp_remove(upcb);
     ctx->ret = -1;
@@ -15409,7 +15416,7 @@ static void mg_lwip_tcp_write_tcpip(void *arg) {
   cs->err = tcp_write(tpcb, ctx->data, len, TCP_WRITE_FLAG_COPY);
   unsent = (tpcb->unsent != NULL ? tpcb->unsent->len : 0);
   unacked = (tpcb->unacked != NULL ? tpcb->unacked->len : 0);
-  DBG(("%p tcp_write %u = %d, %u %u", tpcb, len, cs->err, unsent, unacked));
+  DBG(("%p tcp_write %u = %"PRIERR", %u %u", tpcb, len, cs->err, unsent, unacked));
   if (cs->err != ERR_OK) {
     /*
      * We ignore ERR_MEM because memory will be freed up when the data is sent

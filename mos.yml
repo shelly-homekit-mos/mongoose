@@ -11,8 +11,7 @@ tags:
   - docs:net:Mongoose network lib
 
 libs:
-  - location: https://github.com/mongoose-os-libs/mbedtls
-  - location: https://github.com/mongoose-os-libs/vfs-common
+  - location: https://github.com/shelly-homekit-mos/vfs-common
 
 no_implicit_init_deps: true
 init_after:
@@ -36,5 +35,21 @@ cdefs:
   MG_SSL_IF_MBEDTLS_FREE_CERTS: 1
   # Disabled for now because of fragmented handshake issue.
   # MG_SSL_IF_MBEDTLS_MAX_FRAG_LEN: 1024
+  #
+conds:
+  - when: mos.platform == "esp32"
+    apply:
+      libs:
+        - location: https://github.com/shelly-homekit-mos/mbedtls
+
+  - when: mos.platform == "esp32c3"
+    apply:
+      libs:
+        - location: https://github.com/shelly-homekit-mos/mbedtls
+
+  - when: mos.platform == "esp8266"
+    apply:
+      libs:
+        - location: https://github.com/mongoose-os-libs/mbedtls
 
 manifest_version: 2018-06-20
