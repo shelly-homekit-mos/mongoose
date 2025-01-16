@@ -7683,7 +7683,14 @@ int mg_check_digest_auth_algo(struct mg_str method, struct mg_str uri,
                               struct mg_str nc, struct mg_str nonce,
                               struct mg_str auth_domain, enum mg_auth_algo algo,
                               FILE *fp) {
-	return 1;
+  if (algo == MG_AUTH_ALGO_MD5) {
+    return mg_check_digest_auth(method, uri, username, cnonce, response, qop,
+                                nc, nonce, auth_domain, fp);
+  } else if (algo == MG_AUTH_ALGO_SHA256) {
+    //TODO: not implemented yet
+    return 0;
+  }
+  return 0;
 }
 
 int mg_check_digest_auth(struct mg_str method, struct mg_str uri,
